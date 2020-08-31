@@ -1,0 +1,12 @@
+**/QC
+**/Alignments
+**/Data
+**/Nontargeting_samples_refseqs_index
+**/Targeting_samples_refseqs_index
+**/Fragments_coords
+**/Read_pairs_TABs
+**/Ends_counts
+*.fai
+*.wig
+*.tsv.gz
+*.tsv
