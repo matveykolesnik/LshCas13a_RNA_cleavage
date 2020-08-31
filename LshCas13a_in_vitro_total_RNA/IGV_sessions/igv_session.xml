@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Session genome="/home/matvey/data/LshCas13a_RNA_cleavage/LshCas13a_in_vitro_total_RNA/Reference_sequences/E_coli_MS2_small_RNAs.fasta" hasGeneTrack="false" hasSequenceTrack="true" locus="NC_000913.3:223857-225524" nextAutoscaleGroup="3" version="8">
+    <Resources>
+        <Resource path="../Results/WIG_files/aveCPM_ends_counts/in_vitro_total_RNA_nontargeting_forward_aveCPM.wig"/>
+        <Resource path="../Results/WIG_files/aveCPM_ends_counts/in_vitro_total_RNA_nontargeting_reverse_aveCPM.wig"/>
+        <Resource path="../Annotations/predicted_TCS.gff3"/>
+        <Resource path="../Results/WIG_files/aveCPM_ends_counts/in_vitro_total_RNA_targeting_reverse_aveCPM.wig"/>
+        <Resource path="../Annotations/NC_000913.3.gff3"/>
+        <Resource path="../Results/WIG_files/aveCPM_ends_counts/in_vitro_total_RNA_targeting_forward_aveCPM.wig"/>
+    </Resources>
+    <Panel height="746" name="DataPanel" width="1829">
+        <Track attributeKey="in_vitro_total_RNA_nontargeting forward" autoScale="false" autoscaleGroup="2" clazz="org.broad.igv.track.DataSourceTrack" fontSize="12" height="150" id="/home/matvey/data/LshCas13a_RNA_cleavage/LshCas13a_in_vitro_total_RNA/Results/WIG_files/aveCPM_ends_counts/in_vitro_total_RNA_nontargeting_forward_aveCPM.wig" name="in_vitro_total_RNA_nontargeting forward" renderer="BAR_CHART" visible="true" windowFunction="mean">
+            <DataRange baseline="0.0" drawBaseline="true" flipAxis="false" maximum="1319.7151" minimum="0.0" type="LINEAR"/>
+        </Track>
+        <Track attributeKey="in_vitro_total_RNA_nontargeting reverse" autoScale="false" autoscaleGroup="2" clazz="org.broad.igv.track.DataSourceTrack" fontSize="12" height="150" id="/home/matvey/data/LshCas13a_RNA_cleavage/LshCas13a_in_vitro_total_RNA/Results/WIG_files/aveCPM_ends_counts/in_vitro_total_RNA_nontargeting_reverse_aveCPM.wig" name="in_vitro_total_RNA_nontargeting reverse" renderer="BAR_CHART" visible="true" windowFunction="mean">
+            <DataRange baseline="0.0" drawBaseline="true" flipAxis="false" maximum="1319.7151" minimum="0.0" type="LINEAR"/>
+        </Track>
+        <Track attributeKey="NC_000913.3.gff3" clazz="org.broad.igv.track.FeatureTrack" color="0,0,178" colorScale="ContinuousColorScale;0.0;26.0;255,255,255;0,0,178" fontSize="12" height="10" id="/home/matvey/data/LshCas13a_RNA_cleavage/LshCas13a_in_vitro_total_RNA/Annotations/NC_000913.3.gff3" name="NC_000913.3.gff3" visible="true"/>
+        <Track attributeKey="predicted_TCS.gff3" clazz="org.broad.igv.track.FeatureTrack" color="0,0,178" colorScale="ContinuousColorScale;0.0;101.0;255,255,255;0,0,178" fontSize="12" height="10" id="/home/matvey/data/LshCas13a_RNA_cleavage/LshCas13a_in_vitro_total_RNA/Annotations/predicted_TCS.gff3" name="predicted_TCS.gff3" visible="true"/>
+        <Track attributeKey="in_vitro_total_RNA_targeting forward" autoScale="false" autoscaleGroup="2" clazz="org.broad.igv.track.DataSourceTrack" fontSize="12" height="150" id="/home/matvey/data/LshCas13a_RNA_cleavage/LshCas13a_in_vitro_total_RNA/Results/WIG_files/aveCPM_ends_counts/in_vitro_total_RNA_targeting_forward_aveCPM.wig" name="in_vitro_total_RNA_targeting forward" renderer="BAR_CHART" visible="true" windowFunction="mean">
+            <DataRange baseline="0.0" drawBaseline="true" flipAxis="false" maximum="1319.7151" minimum="0.0" type="LINEAR"/>
+        </Track>
+        <Track attributeKey="in_vitro_total_RNA_targeting reverse" autoScale="false" autoscaleGroup="2" clazz="org.broad.igv.track.DataSourceTrack" fontSize="12" height="150" id="/home/matvey/data/LshCas13a_RNA_cleavage/LshCas13a_in_vitro_total_RNA/Results/WIG_files/aveCPM_ends_counts/in_vitro_total_RNA_targeting_reverse_aveCPM.wig" name="in_vitro_total_RNA_targeting reverse" renderer="BAR_CHART" visible="true" windowFunction="mean">
+            <DataRange baseline="0.0" drawBaseline="true" flipAxis="false" maximum="1319.7151" minimum="0.0" type="LINEAR"/>
+        </Track>
+    </Panel>
+    <Panel height="52" name="FeaturePanel" width="1829">
+        <Track attributeKey="Reference sequence" clazz="org.broad.igv.track.SequenceTrack" fontSize="10" id="Reference sequence" name="Reference sequence" visible="true"/>
+    </Panel>
+    <PanelLayout dividerFractions="0.929192546583851"/>
+    <HiddenAttributes>
+        <Attribute name="DATA FILE"/>
+        <Attribute name="DATA TYPE"/>
+        <Attribute name="NAME"/>
+    </HiddenAttributes>
+</Session>

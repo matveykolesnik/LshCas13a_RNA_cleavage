@@ -51,3 +51,5 @@ apply(tRNA_annotation, 1, function(x) build_tRNA_table(N5E_table = N5E_counts_ta
                                                        tRNA_strand = x["tRNA_strand"], 
                                                        AC_pos = as.integer(x["AC_pos"]),
                                                        output_dir = tRNA_tables_dir))
+
+#create source table for rrsH transcript
