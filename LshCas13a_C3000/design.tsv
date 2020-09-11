@@ -1,0 +1,13 @@
+Sample	Exp_group	TAP_treatment
+KSIJ01_S13	targeting	untreated
+KSIJ02_S14	targeting	untreated
+KSIJ03_S15	targeting	untreated
+KSIJ04_S16	nontargeting	untreated
+KSIJ05_S17	nontargeting	untreated
+KSIJ06_S18	nontargeting	untreated
+KSIJ07_S19	targeting	treated
+KSIJ08_S20	targeting	treated
+KSIJ09_S21	targeting	treated
+KSIJ10_S22	nontargeting	treated
+KSIJ11_S23	nontargeting	treated
+KSIJ12_S24	nontargeting	treated

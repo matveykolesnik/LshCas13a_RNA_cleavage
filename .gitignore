@@ -1,3 +1,4 @@
+**/Docs
 **/QC
 **/Alignments
 **/Data
@@ -11,6 +12,5 @@
 *.fai
 *.wig
 *.tsv.gz
-*.tsv
 *.bt2
 .Rhistory

@@ -1,0 +1,13 @@
+Sample	Exp_group	TAP_treatment
+IJ01_S1	targeting	untreated
+IJ02_S2	targeting	untreated
+IJ03_S3	targeting	untreated
+IJ04_S4	nontargeting	untreated
+IJ05_S5	nontargeting	untreated
+IJ06_S6	nontargeting	untreated
+IJ07_S7	targeting	treated
+IJ08_S8	targeting	treated
+IJ09_S9	targeting	treated
+IJ10_S10	nontargeting	treated
+IJ11_S11	nontargeting	treated
+IJ12_S12	nontargeting	treated
