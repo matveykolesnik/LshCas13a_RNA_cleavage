@@ -317,16 +317,16 @@ def plot_rna_addcolors(cg, ax=None, offset=(0, 0), text_kwargs={}, backbone_kwar
             ax.annotate(cg.seq[i+1],xy=coord, ha="center", va="center", **text_kwargs )
 
     all_coords=list(coords)
-    ntnum_kwargs = {"color":"gray"}
-    ntnum_kwargs.update(text_kwargs)
-    for nt in range(10, cg.seq_length, 10):
-        # We try different angles
-        annot_pos = _find_annot_pos_on_circle(nt, all_coords, cg)
-        if annot_pos is not None:
-            ax.annotate(str(nt), xy=coords[nt-1], xytext=annot_pos,
-                        arrowprops={"width":1, "headwidth":1, "color":"gray"},
-                        ha="center", va="center", zorder=0, **ntnum_kwargs)
-            all_coords.append(annot_pos)
+    # ntnum_kwargs = {"color":"gray"}
+    # ntnum_kwargs.update(text_kwargs)
+    # for nt in range(10, cg.seq_length, 10):
+        # # We try different angles
+        # annot_pos = _find_annot_pos_on_circle(nt, all_coords, cg)
+        # if annot_pos is not None:
+            # ax.annotate(str(nt), xy=coords[nt-1], xytext=annot_pos,
+                        # arrowprops={"width":1, "headwidth":1, "color":"gray"},
+                        # ha="center", va="center", zorder=0, **ntnum_kwargs)
+            # all_coords.append(annot_pos)
 
     _annotate_rna_plot(ax, cg, all_coords, annotations, text_kwargs)
     datalim = ((min(list(coords[:, 0]) + [ax.get_xlim()[0]]),
