@@ -5,7 +5,8 @@ library(data.table)
 setwd("~/data/LshCas13a_RNA_cleavage/LshCas13a_in_vitro_total_RNA/")
 
 TCS_features_table <- read.delim("Results/Tables/TCS_detection_tables/LRTest_table_and_genome_features.tsv", sep = "\t", header = T, stringsAsFactors = F) %>% 
-  arrange(., PValue.adj)
+  arrange(., PValue.adj) %>% 
+  filter(., !(MatchedFeatureType %in% c("tRNA")))
 
 TCS_features_table$feature_label <- as.character("")
 t = 20
@@ -21,4 +22,4 @@ TCS_volcano <- ggplot(TCS_features_table, aes(x=logFC, y=-log10(PValue.adj), col
   guides(color=guide_legend("Type of genomic feature"))+
   theme_classic()
 
-ggsave("mRNA_located_TCS_SS/LshCas13a_in_vitro_total_RNA_volcano.png", plot = TCS_volcano, device = "png", dpi=500, scale = 1.5)
+ggsave("hairpin_cleavage/Pictures/LshCas13a_in_vitro_total_RNA_volcano_nontRNA.png", plot = TCS_volcano, device = "png", dpi=500, scale = 1.5)
