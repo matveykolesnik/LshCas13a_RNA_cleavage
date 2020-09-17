@@ -8,6 +8,7 @@
 **/Read_pairs_TABs
 **/Ends_counts
 **/.ipynb_checkpoints
+**/__pycache__
 **/IGV_sessions
 *.fai
 *.wig
