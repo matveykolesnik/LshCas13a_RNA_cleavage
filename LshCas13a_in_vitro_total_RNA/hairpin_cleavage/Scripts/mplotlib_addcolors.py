@@ -204,8 +204,8 @@ def _annotate_rna_plot(ax, cg, coords, annotations, text_kwargs):
         else:
             log.info("Cannot annotate %s as '%s' , because of insufficient space.", mloop, annot_dict[mloop])
 
-def plot_rna(cg, ax=None, offset=(0, 0), text_kwargs={}, backbone_kwargs={},
-             basepair_kwargs={}, color=True, lighten=0, annotations={}):
+def plot_rna_addcolors(cg, ax=None, offset=(0, 0), text_kwargs={}, backbone_kwargs={},
+             basepair_kwargs={}, colorlist=None, lighten=0, annotations={}):
     '''
     Plot an RNA structure given a set of nucleotide coordinates
 
@@ -287,17 +287,19 @@ def plot_rna(cg, ax=None, offset=(0, 0), text_kwargs={}, backbone_kwargs={},
             basepairs.append([coords[p1-1], coords[p2-1]])
     if basepairs:
         basepairs = np.array(basepairs)
-        if color:
-            c = "red"
-        else:
-            c = "black"
-            bpkwargs = {"color":c, "zorder":0, "linewidth":3}
-            bpkwargs.update(basepair_kwargs)
-            ax.plot(basepairs[:,:,0].T, basepairs[:,:,1].T, **bpkwargs)
+        c = "black"
+        bpkwargs = {"color":c, "zorder":0, "linewidth":3}
+        bpkwargs.update(basepair_kwargs)
+        ax.plot(basepairs[:,:,0].T, basepairs[:,:,1].T, **bpkwargs)
     # Now plot circles
     for i, coord in enumerate(coords):
-        if color:
-            c = el_to_color[el_string[i]]
+        if colorlist == None:
+            circle = plt.Circle((coord[0], coord[1]),
+                                edgecolor="black", facecolor="white")
+        else:
+
+            # c = el_to_color[el_string[i]]
+            c = colorlist[i]
             h,l,s = colorsys.rgb_to_hls(*mc.to_rgb(c))
             if lighten>0:
                 l += (1-l)*min(1,lighten)
@@ -308,10 +310,6 @@ def plot_rna(cg, ax=None, offset=(0, 0), text_kwargs={}, backbone_kwargs={},
             c=colorsys.hls_to_rgb(h,l,s)
             circle = plt.Circle((coord[0], coord[1]),
                             color=c)
-        else:
-            circle = plt.Circle((coord[0], coord[1]),
-                                edgecolor="black", facecolor="white")
-
         ax.add_artist(circle)
         if cg.seq:
             if "fontweight" not in text_kwargs:
