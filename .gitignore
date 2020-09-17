@@ -2,6 +2,7 @@
 **/QC
 **/Alignments
 **/Data
+**/__pycache__
 **/Nontargeting_samples_refseqs_index
 **/Targeting_samples_refseqs_index
 **/Fragments_coords
