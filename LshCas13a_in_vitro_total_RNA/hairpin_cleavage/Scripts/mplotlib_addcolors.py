@@ -308,8 +308,7 @@ def plot_rna_addcolors(cg, ax=None, offset=(0, 0), text_kwargs={}, backbone_kwar
             if l>1 or l<0:
                 print(l)
             c=colorsys.hls_to_rgb(h,l,s)
-            circle = plt.Circle((coord[0], coord[1]),
-                            color=c)
+            circle = plt.Circle((coord[0], coord[1]), edgecolor="black", facecolor=c)
         ax.add_artist(circle)
         if cg.seq:
             if "fontweight" not in text_kwargs:
