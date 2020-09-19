@@ -14,4 +14,6 @@
 *.wig
 *.tsv.gz
 *.bt2
+*.svg
+*.zip
 .Rhistory

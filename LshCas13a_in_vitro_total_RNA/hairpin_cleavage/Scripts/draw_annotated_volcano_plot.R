@@ -6,7 +6,7 @@ setwd("~/data/LshCas13a_RNA_cleavage/LshCas13a_in_vitro_total_RNA/")
 
 TCS_features_table <- read.delim("Results/Tables/TCS_detection_tables/LRTest_table_and_genome_features.tsv", sep = "\t", header = T, stringsAsFactors = F) %>% 
   arrange(., PValue.adj) %>% 
-  filter(., !(MatchedFeatureType %in% c("tRNA")))
+  filter(., (MatchedFeatureType %in% c("rRNA", "CDS", "ncRNA")))
 
 TCS_features_table$feature_label <- as.character("")
 t = 20
@@ -16,7 +16,7 @@ TCS_features_table[1:t,]$feature_label <- TCS_features_table[1:t,]$MatchedFeatur
 TCS_volcano <- ggplot(TCS_features_table, aes(x=logFC, y=-log10(PValue.adj), colour = MatchedFeatureType)) +
   geom_point() +
   geom_text_repel(aes(label=feature_label)) +
-  ggtitle("d10LVM TCS volcano plot") +
+  ggtitle("in vitro total RNA TCS volcano plot") +
   xlab(label = "log2 fold change between targeting and nontargeting samples") +
   ylab(label = "-log10 adjusted p-value") +
   guides(color=guide_legend("Type of genomic feature"))+
