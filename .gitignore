@@ -15,6 +15,6 @@
 *.tsv.gz
 *.bt2
 *.zip
-*.png
 *.svg
+*.png
 .Rhistory
