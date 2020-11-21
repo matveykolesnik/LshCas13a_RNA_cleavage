@@ -9,7 +9,7 @@ import gzip, os
 import pandas as pd
 
 # Path section
-WD = "LshCas13a_d10LVM/"
+WD = "/home/matvey/data/LshCas13a_RNA_cleavage/LshCas13a_d10LVM/"
 SamFilesDir = "Alignments/SAM/"
 
 TabFilesDir = "Results/Tables/Read_pairs_TABs/"
@@ -144,24 +144,24 @@ def create_ends_coverage_wigs(EndCountsFile, EndsCoverageDir):
             for v in wig_record:
                 hReverseWig.write("%f\n" % v)
 
-SamFilesList = sorted([f for f in os.listdir(SamFilesDir) if f.endswith(".sam.gz")])
-for f in SamFilesList:
-    print("Processing SAM file %s..." % f)
-    tab_file_path = os.path.join(TabFilesDir, os.path.basename(f).rsplit(".")[0]+".TAB.tsv.gz")
+# SamFilesList = sorted([f for f in os.listdir(SamFilesDir) if f.endswith(".sam.gz")])
+# for f in SamFilesList:
+    # print("Processing SAM file %s..." % f)
+    # tab_file_path = os.path.join(TabFilesDir, os.path.basename(f).rsplit(".")[0]+".TAB.tsv.gz")
     
-    print("Creating TAB file...")
-    create_read_pairs_TAB(sam_file=os.path.join(SamFilesDir, f), 
-                          tab_file=tab_file_path)
+    # print("Creating TAB file...")
+    # create_read_pairs_TAB(sam_file=os.path.join(SamFilesDir, f), 
+                          # tab_file=tab_file_path)
 
 
-TabFilesList = sorted([f for f in os.listdir(TabFilesDir) if f.endswith(".tsv.gz")])
-for f in TabFilesList:
-    print("Processing TAB file %s..." % f)
-    frag_coords_file_path = os.path.join(FragCoordsDir, os.path.basename(f).rsplit(".")[0]+".FragmentCoords.tsv.gz")
-    print("Creating fragments coords table..")
+# TabFilesList = sorted([f for f in os.listdir(TabFilesDir) if f.endswith(".tsv.gz")])
+# for f in TabFilesList:
+    # print("Processing TAB file %s..." % f)
+    # frag_coords_file_path = os.path.join(FragCoordsDir, os.path.basename(f).rsplit(".")[0]+".FragmentCoords.tsv.gz")
+    # print("Creating fragments coords table..")
     
-    create_fragments_coords_table(tab_file=os.path.join(TabFilesDir, f),
-                                  output_table=frag_coords_file_path)
+    # create_fragments_coords_table(tab_file=os.path.join(TabFilesDir, f),
+                                  # output_table=frag_coords_file_path)
 
 FragCoordsList = sorted([f for f in os.listdir(FragCoordsDir) if f.endswith(".tsv.gz")])
 for f in FragCoordsList:
