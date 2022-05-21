@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Session genome="/home/matvey/data/LshCas13a_RNA_cleavage/LshCas13a_C3000/Reference_sequences/Targeting_samples_refseqs.fasta" hasGeneTrack="false" hasSequenceTrack="true" locus="NC_000913.3:2295849-2339803" nextAutoscaleGroup="2" path="/home/matvey/data/LshCas13a_RNA_cleavage/LshCas13a_C3000/igv_session.xml" version="8">
+    <Resources>
+        <Resource path="/home/matvey/data/LshCas13a_RNA_cleavage/LshCas13a_C3000/Results/WIG_files/Ends_coverage/KSIJ01_S13.N5E_forward_CPM_norm.wig"/>
+        <Resource path="/home/matvey/data/LshCas13a_RNA_cleavage/LshCas13a_C3000/Results/WIG_files/Ends_coverage/KSIJ04_S16.N5E_forward_CPM_norm.wig"/>
+        <Resource path="/home/matvey/data/LshCas13a_RNA_cleavage/LshCas13a_C3000/Results/WIG_files/Ends_coverage/KSIJ05_S17.N5E_forward_CPM_norm.wig"/>
+        <Resource path="/home/matvey/data/LshCas13a_RNA_cleavage/LshCas13a_C3000/Results/WIG_files/Ends_coverage/KSIJ06_S18.N5E_forward_CPM_norm.wig"/>
+        <Resource path="/home/matvey/data/LshCas13a_RNA_cleavage/LshCas13a_C3000/Results/WIG_files/Ends_coverage/KSIJ03_S15.N5E_reverse_CPM_norm.wig"/>
+        <Resource path="/home/matvey/data/LshCas13a_RNA_cleavage/LshCas13a_C3000/Results/WIG_files/Ends_coverage/KSIJ04_S16.N5E_reverse_CPM_norm.wig"/>
+        <Resource path="/home/matvey/data/LshCas13a_RNA_cleavage/LshCas13a_C3000/Results/WIG_files/Ends_coverage/KSIJ05_S17.N5E_reverse_CPM_norm.wig"/>
+        <Resource path="/home/matvey/data/LshCas13a_RNA_cleavage/LshCas13a_C3000/Results/WIG_files/Ends_coverage/KSIJ06_S18.N5E_reverse_CPM_norm.wig"/>
+        <Resource path="/home/matvey/data/LshCas13a_RNA_cleavage/LshCas13a_C3000/Results/WIG_files/Ends_coverage/KSIJ01_S13.N5E_reverse_CPM_norm.wig"/>
+        <Resource path="/home/matvey/data/LshCas13a_RNA_cleavage/LshCas13a_C3000/Results/WIG_files/Ends_coverage/KSIJ02_S14.N5E_reverse_CPM_norm.wig"/>
+        <Resource path="/home/matvey/data/LshCas13a_RNA_cleavage/LshCas13a_C3000/Results/WIG_files/Ends_coverage/KSIJ02_S14.N5E_forward_CPM_norm.wig"/>
+        <Resource path="/home/matvey/data/LshCas13a_RNA_cleavage/LshCas13a_C3000/Results/WIG_files/Ends_coverage/KSIJ03_S15.N5E_forward_CPM_norm.wig"/>
+        <Resource path="/home/matvey/data/LshCas13a_RNA_cleavage/LshCas13a_C3000/Annotations/Summarized_annotation.gff3"/>
+    </Resources>
+    <Panel height="702" name="DataPanel" width="1901">
+        <Track autoScale="false" autoscaleGroup="1" clazz="org.broad.igv.track.DataSourceTrack" fontSize="12" id="/home/matvey/data/LshCas13a_RNA_cleavage/LshCas13a_C3000/Results/WIG_files/Ends_coverage/KSIJ01_S13.N5E_forward_CPM_norm.wig" name="KSIJ01_S13.N5E forward" renderer="BAR_CHART" visible="true" windowFunction="mean">
+            <DataRange baseline="0.0" drawBaseline="true" flipAxis="false" maximum="38.43838" minimum="0.0" type="LINEAR"/>
+        </Track>
+        <Track autoScale="false" autoscaleGroup="1" clazz="org.broad.igv.track.DataSourceTrack" fontSize="12" id="/home/matvey/data/LshCas13a_RNA_cleavage/LshCas13a_C3000/Results/WIG_files/Ends_coverage/KSIJ02_S14.N5E_forward_CPM_norm.wig" name="KSIJ02_S14.N5E forward" renderer="BAR_CHART" visible="true" windowFunction="mean">
+            <DataRange baseline="0.0" drawBaseline="true" flipAxis="false" maximum="38.43838" minimum="0.0" type="LINEAR"/>
+        </Track>
+        <Track autoScale="false" autoscaleGroup="1" clazz="org.broad.igv.track.DataSourceTrack" fontSize="12" id="/home/matvey/data/LshCas13a_RNA_cleavage/LshCas13a_C3000/Results/WIG_files/Ends_coverage/KSIJ03_S15.N5E_forward_CPM_norm.wig" name="KSIJ03_S15.N5E forward" renderer="BAR_CHART" visible="true" windowFunction="mean">
+            <DataRange baseline="0.0" drawBaseline="true" flipAxis="false" maximum="38.43838" minimum="0.0" type="LINEAR"/>
+        </Track>
+        <Track autoScale="false" autoscaleGroup="1" clazz="org.broad.igv.track.DataSourceTrack" fontSize="12" id="/home/matvey/data/LshCas13a_RNA_cleavage/LshCas13a_C3000/Results/WIG_files/Ends_coverage/KSIJ04_S16.N5E_forward_CPM_norm.wig" name="KSIJ04_S16.N5E forward" renderer="BAR_CHART" visible="true" windowFunction="mean">
+            <DataRange baseline="0.0" drawBaseline="true" flipAxis="false" maximum="38.43838" minimum="0.0" type="LINEAR"/>
+        </Track>
+        <Track autoScale="false" autoscaleGroup="1" clazz="org.broad.igv.track.DataSourceTrack" fontSize="12" id="/home/matvey/data/LshCas13a_RNA_cleavage/LshCas13a_C3000/Results/WIG_files/Ends_coverage/KSIJ05_S17.N5E_forward_CPM_norm.wig" name="KSIJ05_S17.N5E forward" renderer="BAR_CHART" visible="true" windowFunction="mean">
+            <DataRange baseline="0.0" drawBaseline="true" flipAxis="false" maximum="38.43838" minimum="0.0" type="LINEAR"/>
+        </Track>
+        <Track autoScale="false" autoscaleGroup="1" clazz="org.broad.igv.track.DataSourceTrack" fontSize="12" id="/home/matvey/data/LshCas13a_RNA_cleavage/LshCas13a_C3000/Results/WIG_files/Ends_coverage/KSIJ06_S18.N5E_forward_CPM_norm.wig" name="KSIJ06_S18.N5E forward" renderer="BAR_CHART" visible="true" windowFunction="mean">
+            <DataRange baseline="0.0" drawBaseline="true" flipAxis="false" maximum="38.43838" minimum="0.0" type="LINEAR"/>
+        </Track>
+        <Track clazz="org.broad.igv.track.FeatureTrack" color="0,0,178" colorScale="ContinuousColorScale;0.0;30.0;255,255,255;0,0,178" fontSize="12" id="/home/matvey/data/LshCas13a_RNA_cleavage/LshCas13a_C3000/Annotations/Summarized_annotation.gff3" name="Summarized_annotation.gff3" visible="true"/>
+        <Track autoScale="false" autoscaleGroup="1" clazz="org.broad.igv.track.DataSourceTrack" fontSize="12" id="/home/matvey/data/LshCas13a_RNA_cleavage/LshCas13a_C3000/Results/WIG_files/Ends_coverage/KSIJ01_S13.N5E_reverse_CPM_norm.wig" name="KSIJ01_S13.N5E reverse" renderer="BAR_CHART" visible="true" windowFunction="mean">
+            <DataRange baseline="0.0" drawBaseline="true" flipAxis="false" maximum="38.43838" minimum="0.0" type="LINEAR"/>
+        </Track>
+        <Track autoScale="false" autoscaleGroup="1" clazz="org.broad.igv.track.DataSourceTrack" fontSize="12" id="/home/matvey/data/LshCas13a_RNA_cleavage/LshCas13a_C3000/Results/WIG_files/Ends_coverage/KSIJ02_S14.N5E_reverse_CPM_norm.wig" name="KSIJ02_S14.N5E reverse" renderer="BAR_CHART" visible="true" windowFunction="mean">
+            <DataRange baseline="0.0" drawBaseline="true" flipAxis="false" maximum="38.43838" minimum="0.0" type="LINEAR"/>
+        </Track>
+        <Track autoScale="false" autoscaleGroup="1" clazz="org.broad.igv.track.DataSourceTrack" fontSize="12" id="/home/matvey/data/LshCas13a_RNA_cleavage/LshCas13a_C3000/Results/WIG_files/Ends_coverage/KSIJ03_S15.N5E_reverse_CPM_norm.wig" name="KSIJ03_S15.N5E reverse" renderer="BAR_CHART" visible="true" windowFunction="mean">
+            <DataRange baseline="0.0" drawBaseline="true" flipAxis="false" maximum="38.43838" minimum="0.0" type="LINEAR"/>
+        </Track>
+        <Track autoScale="false" autoscaleGroup="1" clazz="org.broad.igv.track.DataSourceTrack" fontSize="12" id="/home/matvey/data/LshCas13a_RNA_cleavage/LshCas13a_C3000/Results/WIG_files/Ends_coverage/KSIJ04_S16.N5E_reverse_CPM_norm.wig" name="KSIJ04_S16.N5E reverse" renderer="BAR_CHART" visible="true" windowFunction="mean">
+            <DataRange baseline="0.0" drawBaseline="true" flipAxis="false" maximum="38.43838" minimum="0.0" type="LINEAR"/>
+        </Track>
+        <Track autoScale="false" autoscaleGroup="1" clazz="org.broad.igv.track.DataSourceTrack" fontSize="12" id="/home/matvey/data/LshCas13a_RNA_cleavage/LshCas13a_C3000/Results/WIG_files/Ends_coverage/KSIJ05_S17.N5E_reverse_CPM_norm.wig" name="KSIJ05_S17.N5E reverse" renderer="BAR_CHART" visible="true" windowFunction="mean">
+            <DataRange baseline="0.0" drawBaseline="true" flipAxis="false" maximum="38.43838" minimum="0.0" type="LINEAR"/>
+        </Track>
+        <Track autoScale="false" autoscaleGroup="1" clazz="org.broad.igv.track.DataSourceTrack" fontSize="12" id="/home/matvey/data/LshCas13a_RNA_cleavage/LshCas13a_C3000/Results/WIG_files/Ends_coverage/KSIJ06_S18.N5E_reverse_CPM_norm.wig" name="KSIJ06_S18.N5E reverse" renderer="BAR_CHART" visible="true" windowFunction="mean">
+            <DataRange baseline="0.0" drawBaseline="true" flipAxis="false" maximum="38.43838" minimum="0.0" type="LINEAR"/>
+        </Track>
+    </Panel>
+    <Panel height="89" name="FeaturePanel" width="1901">
+        <Track clazz="org.broad.igv.track.SequenceTrack" fontSize="12" id="Reference sequence" name="Reference sequence" visible="true"/>
+    </Panel>
+    <PanelLayout dividerFractions="0.8822055137844611"/>
+</Session>

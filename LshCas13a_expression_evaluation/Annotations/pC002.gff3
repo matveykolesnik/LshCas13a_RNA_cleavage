@@ -1,0 +1,12 @@
+##gff-version 3
+##sequence-region unknown 1 10606
+# conversion-by bp_genbank2gff3.pl
+# organism synthetic DNA construct
+# Note Endogenous LshC2c2 locus cloned into pACYC184.
+# date 06-AUG-2018
+pC002	AddGene	gene	1475	2665	.	-	.	ID=gene-pC002.1;Name=tet
+pC002	AddGene	CDS	1475	2665	.	-	0	ID=cds-pC002.1;Parent=gene-pC002.1;Name=tet;Note=confers resistance to tetracycline;codon_start=1;label=TcR;product=tetracycline efflux protein;translation=length.396
+pC002	AddGene	gene	3062	7231	.	+	.	ID=gene-pC002.2;Name=LshCas13a
+pC002	AddGene	CDS	3062	7231	.	+	0	ID=cds-pC002.2;Parent=gene-pC002.2;Name=LshCas13a;label=LshCas13a;product=type VI CRISPR effector from Leptotrichia shahii with RNA-guided RNAse activity;translation=length.1389
+pC002	AddGene	gene	441	10388	.	-	.	ID=gene-pC002.3;Name=cat
+pC002	AddGene	CDS	441	10388	.	-	0	ID=cds-pC002.3;Parent=gene-pC002.3;Name=cat;Note=confers resistance to chloramphenicol;codon_start=1;label=CmR;product=chloramphenicol acetyltransferase;translation=length.219
