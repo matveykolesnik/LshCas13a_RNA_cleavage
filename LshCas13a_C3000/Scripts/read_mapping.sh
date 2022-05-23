@@ -1,8 +1,8 @@
-WD="LshCas13a_C3000"
+WD="/home/ledum/data/LshCas13a_RNA_cleavage/LshCas13a_C3000"
 echo $WD
 cd $WD
 
-CPU=20
+CPU=8
 IS=200
 
 nt_refs_path="Reference_sequences/Nontargeting_samples_refseqs.fasta"
