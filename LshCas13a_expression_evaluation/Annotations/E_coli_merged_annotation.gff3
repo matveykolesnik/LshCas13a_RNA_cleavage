@@ -10131,7 +10131,7 @@ NC_000913.3	RefSeq	CDS	4640942	4641628	.	+	0	ID=cds4356;Parent=gene4565;Dbxref=U
 # organism synthetic DNA construct
 # Note inducible RFP expression vector.
 # date 06-AUG-2018
-pC008	AddGene	gene	81	1271	.	-	.	ID=gene-pC008.1;Name=tet;
+pC008	AddGene	gene	81	1271	.	-	.	ID=gene-pC008.1;Name=tet1;
 pC008	AddGene	CDS	81	1271	.	-	0	ID=cds-pC008.1;Parent=gene-pC008.1;Name=tet;Note=confers resistance to tetracycline;codon_start=1;label=TcR;product=tetracycline efflux protein;translation=length.396
 pC008	AddGene	gene	1565	2425	.	+	.	ID=gene-pC008.2;Name=bla
 pC008	AddGene	CDS	1565	2425	.	+	0	ID=cds-pC008.2;Name=bla;Note=confers resistance to ampicillin%2C carbenicillin%2C and related antibiotics;codon_start=1;label=AmpR;product=beta-lactamase;translation=length.286
@@ -10147,7 +10147,7 @@ pC008	AddGene	CDS	5029	5220	.	-	0	ID=cds-pC008.5;Name=rop;codon_start=1;label=ro
 # organism synthetic DNA construct
 # Note Endogenous LshC2c2 locus cloned into pACYC184.
 # date 06-AUG-2018
-pC002	AddGene	gene	1475	2665	.	-	.	ID=gene-pC002.1;Name=tet
+pC002	AddGene	gene	1475	2665	.	-	.	ID=gene-pC002.1;Name=tet2
 pC002	AddGene	CDS	1475	2665	.	-	0	ID=cds-pC002.1;Parent=gene-pC002.1;Name=tet;Note=confers resistance to tetracycline;codon_start=1;label=TcR;product=tetracycline efflux protein;translation=length.396
 pC002	AddGene	gene	3062	7231	.	+	.	ID=gene-pC002.2;Name=LshCas13a
 pC002	AddGene	CDS	3062	7231	.	+	0	ID=cds-pC002.2;Parent=gene-pC002.2;Name=LshCas13a;label=LshCas13a;product=type VI CRISPR effector from Leptotrichia shahii with RNA-guided RNAse activity;translation=length.1389

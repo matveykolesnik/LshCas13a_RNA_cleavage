@@ -108,11 +108,9 @@ library(ggrepel)
 library(ggpubr)
 library(data.table)
 
-reference_genes <- E_coli_tpm_dt[0:100,]$Name
+reference_genes <- c("rpoB", "rpoC")
 Eco_Lse_tpm_labeled <- Eco_Lse_tpm %>% 
-  mutate(ref = ifelse(Name=="cas13a", Name, ""))
-  #mutate(ref = ifelse(Name %in% c("cas13a", reference_genes), Name, "")) %>% 
-  #mutate(fill = ifelse(Name %in% reference_genes, "ref", "other"))
+  mutate(ref = ifelse(Name %in% c("cas13a", reference_genes), Name, ""))
 
 
 correlation_plot <- ggplot(Eco_Lse_tpm_labeled, aes(x = logEcoNTMean, y = logLseWT)) +

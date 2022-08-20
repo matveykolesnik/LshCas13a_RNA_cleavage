@@ -1,5 +1,6 @@
 library(ggplot2)
 library(ggrepel)
+library(ggpubr)
 library(data.table)
 library(dplyr)
 
@@ -17,7 +18,7 @@ Ec_Lsh.TPM <- inner_join(Ec_featureCounts.TPM.dt, Lsh_featureCounts.TPM.dt, by="
   filter_at(c("EcTPM", "LshTPM"), all_vars(. > 0))
 print(nrow(Ec_Lsh.TPM))
 
-labeled_genes <- c("LshCas13a", "ssrA", "ffs", "rnpB", "ssrS")
+labeled_genes <- c("LshCas13a", "ssrA", "ffs", "rnpB", "ssrS", "rpoB", "rpoC")
 
 Ec_Lsh.TPM.labeled <- Ec_Lsh.TPM %>% 
   mutate(ref = ifelse(Name %in% labeled_genes, Name, "")) %>% 
@@ -28,11 +29,12 @@ cor.test(x = log10(Ec_Lsh.TPM.labeled$EcTPM), y = log10(Ec_Lsh.TPM.labeled$LshTP
 correlation_plot <- ggplot(Ec_Lsh.TPM.labeled, aes(x = log10(EcTPM), y = log10(LshTPM))) +
   geom_point()+
   geom_smooth(method=lm) +
-  #scale_color_manual(values = c("black", "red")) +
   geom_text_repel(aes(label = ref)) +
-  xlab("logTPM of E. coli gene transcripts") +
-  ylab("logTPM of L. shahii gene transcripts") +
+  xlab("lgTPM of E. coli gene transcripts") +
+  ylab("lgTPM of L. shahii gene transcripts") +
+  stat_cor(method = "spearman") +
   theme_bw()
 
-ggsave(filename = "Results/Pictures/Eco_Lsh_cor_plot_cas13a_added.png", plot = correlation_plot, dpi = "retina", height = 10, width = 10)
+ggsave(filename = "Results/Pictures/Eco_Lsh_cor_plot_cas13a_added_spearman_cor_coeff.png", 
+       plot = correlation_plot, dpi = "retina", height = 10, width = 10)
 

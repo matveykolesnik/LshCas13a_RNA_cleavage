@@ -64,3 +64,24 @@ Ecd10LVM_volcano <- ggplot(data = Ecd10LVM_DESeq.dt.labeled, aes(x = log2FoldCha
   theme_bw()
 
 ggsave("Results/Pictures/Ecd10LVM_DESeq2_volcano_rtcB_colored.png", plot = Ecd10LVM_volcano, height = 5, width = 5)
+
+Gourse_2019_down_genes <- c("ydgI")
+Gourse_2019_up_genes <- c("argC", "argB", "argH", "argA", "argE", "argF", "argI")
+
+EcC3000_DESeq.dt.Gourse <- EcC3000_DESeq.dt %>% 
+  mutate(Gene = ifelse(Name %in% Gourse_2019_down_genes, "downregulated (Sanchez-Vazquez et al., 2019)",
+                       ifelse(Name %in% Gourse_2019_up_genes, "upregulated (Sanchez-Vazquez et al., 2019)", "Other"))) %>% 
+  arrange(Gene)
+color_scheme3 <- c("downregulated (Sanchez-Vazquez et al., 2019)" = "red",
+                   "upregulated (Sanchez-Vazquez et al., 2019)" = "orange",
+                   "Other" = "grey")
+
+
+EcC3000_volcano_Goerse_data <- ggplot(data = EcC3000_DESeq.dt.Gourse, aes(x = log2FoldChange, y = -log10(padj), color=Gene)) +
+  geom_point() +
+  scale_color_manual(values = color_scheme3) +
+  xlab("log2FC") +
+  ylab("-log10(FDR)") +
+  theme_bw()
+
+ggsave("Results/Pictures/EcC3000_DESeq2_Goerse_data_arg.png", plot = EcC3000_volcano_Goerse_data, height = 10, width = 10)
