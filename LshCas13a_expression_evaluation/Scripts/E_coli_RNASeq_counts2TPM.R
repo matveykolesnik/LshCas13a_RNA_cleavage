@@ -105,6 +105,7 @@ print(nrow(Eco_Lse_tpm))
 
 library(ggplot2)
 library(ggrepel)
+library(ggpubr)
 library(data.table)
 
 reference_genes <- E_coli_tpm_dt[0:100,]$Name
@@ -120,10 +121,9 @@ correlation_plot <- ggplot(Eco_Lse_tpm_labeled, aes(x = logEcoNTMean, y = logLse
   geom_smooth(method=lm) +
   #scale_color_manual(values = c("black", "red")) +
   geom_text_repel(aes(label = ref)) +
-  xlab("logTPM of E. coli gene transcripts") +
-  ylab("logTPM of L. seeligeri gene transcripts") +
+  xlab("lgTPM of E. coli gene transcripts") +
+  ylab("lgTPM of L. seeligeri gene transcripts") +
+  stat_cor(method = "spearman") +
   theme_bw()
 
-ggsave(filename = "Results/Pictures/Eco_Lse_cor_plot.png", plot = correlation_plot, dpi = 300)
-
-ggscatter(Eco_Lse_tpm_labeled, x = "logEcoNTMean", y = "logLse")
+ggsave(filename = "Results/Pictures/Eco_Lse_cor_plot_spearman_test.png", plot = correlation_plot, dpi = "retina", height = 10, width = 10)

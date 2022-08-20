@@ -1,19 +1,66 @@
 library(dplyr)
 library(ggplot2)
 library(ggrepel)
+library(data.table)
 
 WD <- "~/data/LshCas13a_RNA_cleavage/LshCas13a_expression_evaluation/"
 setwd(WD)
 
-N=100
+EcC3000_DESeq_file <- "Results/Tables/DESeqRes/EcC3000_DESeqRes.tsv"
+Ecd10LVM_DESeq_file <- "Results/Tables/DESeqRes/Ecd10LVM_DESeqRes.tsv"
 
-DESeq_resuls <- "Results/Tables/DESeq2_results/nontargeting_vs_targeting_dge.tsv"
-DESeq_resuls.df <- read.delim(DESeq_resuls, sep = "\t", header = T, stringsAsFactors = F) %>% 
-  mutate(Name = c(rownames(.,)[1:N], rep("", nrow(.)-N)))
+EcC3000_DESeq.dt <- fread(EcC3000_DESeq_file)
+Ecd10LVM_DESeq.dt <- fread(Ecd10LVM_DESeq_file)
 
-ggplot(DESeq_resuls.df, aes(x = log2FoldChange, y = -log10(padj))) +
+E_coli_ribosomal_genes_file <- "Results/Tables/E_coli_ribosomal_proteins_.txt"
+E_coli_ribosomal_genes_list <- scan(E_coli_ribosomal_genes_file, what = "character")
+
+EcC3000_DESeq.dt.labeled <- EcC3000_DESeq.dt %>% 
+  mutate(label = ifelse(Name == "rpoS", Name, "")) %>% 
+  mutate(Gene = ifelse(Name %in% E_coli_ribosomal_genes_list, "Ribosomal\nprotein genes",
+                       ifelse(Name == "rpoS", "rpoS", "Other"))) %>% 
+  arrange(Gene)
+
+color_scheme <- c("Ribosomal\nprotein genes" = "red", "Other" = "grey", "rpoS" = "black")
+
+EcC3000_volcano <- ggplot(data = EcC3000_DESeq.dt.labeled, aes(x = log2FoldChange, y = -log10(padj), color=Gene)) +
   geom_point() +
-  geom_text_repel(aes(label=Name))
+  scale_color_manual(values = color_scheme) +
+  geom_text_repel(aes(label = label), max.overlaps = 10000, show.legend = F) +
+  xlab("log2FC") +
+  ylab("-log10(FDR)") +
+  theme_bw()
 
-DESeq_resuls_poslfc.df <- DESeq_resuls.df %>% 
-  filter(log2FoldChange > 0)
+ggsave("Results/Pictures/EcC3000_DESeq2_volcano_rp_genes_rpoS_colored.png", plot = EcC3000_volcano, height = 5, width = 5)
+
+Type_I_antitoxin_rnas <- c("rdlA", "rdlB", "rdlC", "rdlD", "istR", "symR", "sibA", "sibB", "sibC", "sibD", "sibE", "ohsC", "ralA", "agrA")
+color_scheme1 <- c("antitoxin RNA" = "red", "Other" = "grey")
+
+EcC3000_DESeq.dt.labeled_TAS <- EcC3000_DESeq.dt %>% 
+  mutate(label = ifelse(Name %in% Type_I_antitoxin_rnas, "antitoxin RNA", "Other")) %>% 
+  arrange(desc(label))
+
+EcC3000_volcano_Type_I_TAS <- ggplot(data = EcC3000_DESeq.dt.labeled_TAS, aes(x = log2FoldChange, y = -log10(padj), color=label)) +
+  geom_point() +
+  scale_color_manual(values = color_scheme1) +
+  xlab("log2FC") +
+  ylab("-log10(FDR)") +
+  theme_bw()
+
+ggsave("Results/Pictures/EcC3000_DESeq2_volcano_Type_I_TAS_colored.png", plot = EcC3000_volcano_Type_I_TAS, height = 5, width = 5)
+
+Ecd10LVM_DESeq.dt.labeled <- Ecd10LVM_DESeq.dt %>% 
+  mutate(label = ifelse(Name == "rtcB", Name, "")) %>% 
+  mutate(Gene = ifelse(Name == "rtcB", Name, "Other")) %>% 
+  arrange(label)
+
+color_scheme2 <- c("rtcB" = "red", "Other" = "grey")
+
+Ecd10LVM_volcano <- ggplot(data = Ecd10LVM_DESeq.dt.labeled, aes(x = log2FoldChange, y = -log10(padj), color=Gene)) +
+  geom_point() +
+  scale_color_manual(values = color_scheme2) +
+  xlab("log2FC") +
+  ylab("-log10(FDR)") +
+  theme_bw()
+
+ggsave("Results/Pictures/Ecd10LVM_DESeq2_volcano_rtcB_colored.png", plot = Ecd10LVM_volcano, height = 5, width = 5)
