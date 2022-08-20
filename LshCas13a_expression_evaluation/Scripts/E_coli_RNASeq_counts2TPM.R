@@ -126,4 +126,5 @@ correlation_plot <- ggplot(Eco_Lse_tpm_labeled, aes(x = logEcoNTMean, y = logLse
   stat_cor(method = "spearman") +
   theme_bw()
 
-ggsave(filename = "Results/Pictures/Eco_Lse_cor_plot_spearman_test.png", plot = correlation_plot, dpi = "retina", height = 10, width = 10)
+ggsave(filename = "Results/Pictures/Eco_Lse_cor_plot_spearman_test.png", 
+       plot = correlation_plot, dpi = "retina", height = 10, width = 10)
