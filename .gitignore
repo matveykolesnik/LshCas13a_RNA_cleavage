@@ -19,3 +19,4 @@
 *.png
 .Rhistory
 .RData
+.Rproj.user
