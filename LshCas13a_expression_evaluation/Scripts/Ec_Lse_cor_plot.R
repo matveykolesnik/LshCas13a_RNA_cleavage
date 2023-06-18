@@ -110,19 +110,25 @@ library(data.table)
 
 reference_genes <- c("rpoB", "rpoC")
 Eco_Lse_tpm_labeled <- Eco_Lse_tpm %>% 
-  mutate(ref = ifelse(Name %in% c("cas13a", reference_genes), Name, ""))
+  mutate(ref = ifelse(Name %in% c("cas13a", reference_genes), Name, ""),
+         fill = ifelse(Name == "cas13a", "cas13a", "other")) %>% 
+  mutate(fill = ifelse(Name == "cas13a", "cas13a",
+                       ifelse(Name %in% reference_genes, "reference_genes", "other")))
 
+color_scheme <- c("LshCas13a" = "red", "other" = "grey", "reference_genes" = "purple")
 
-correlation_plot <- ggplot(Eco_Lse_tpm_labeled, aes(x = logEcoNTMean, y = logLseWT)) +
-  #geom_point(aes(color=fill)) +
-  geom_point()+
-  geom_smooth(method=lm) +
-  #scale_color_manual(values = c("black", "red")) +
-  geom_text_repel(aes(label = ref)) +
+correlation_plot <- ggplot(Eco_Lse_tpm_labeled, aes(x = logEcoNTMean, y = logLseWT, color=fill)) +
+  geom_point() +
+  geom_smooth(method=lm, color="black") +
+  scale_color_manual(values = color_scheme) +
+  geom_text_repel(aes(label = ref), colour="black", size=8, max.overlaps=100) +
   xlab("lgTPM of E. coli gene transcripts") +
   ylab("lgTPM of L. seeligeri gene transcripts") +
-  stat_cor(method = "spearman") +
-  theme_bw()
+  stat_cor(method = "spearman", colour = "black", size=10) +
+  theme_bw() +
+  theme(text = element_text(size = 25),
+        legend.position="none")
 
-ggsave(filename = "Results/Pictures/Eco_Lse_cor_plot_spearman_test.png", 
+ggsave(filename = "Results/Pictures/Correlation_plots/Eco_Lse_cor_plot_spearman_test.png", 
        plot = correlation_plot, dpi = "retina", height = 10, width = 10)
+

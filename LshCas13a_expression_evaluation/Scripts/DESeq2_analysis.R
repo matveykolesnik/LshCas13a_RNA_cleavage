@@ -1,4 +1,4 @@
-setwd("LshCas13a_expression_evaluation/")
+setwd("~/data/LshCas13a_RNA_cleavage/LshCas13a_expression_evaluation/")
 library(DESeq2)
 library(dplyr)
 library(data.table)
@@ -23,7 +23,8 @@ RunDESeq <- function(CountsFile, ConditionsFile) {
                                 colData = conditions,
                                 design = ~ Condition)
   dds <- DESeq(dds)
-  res <- results(dds, contrast = c("Condition", "targeting", "nontargeting"))
+  res <- results(dds, contrast = c("Condition", "targeting", "nontargeting"), alpha=0.001, lfcThreshold=0)
+  print(summary(res))
   resOrdered <- res[order(res$pvalue),]
   return(as.data.frame(resOrdered))
 }

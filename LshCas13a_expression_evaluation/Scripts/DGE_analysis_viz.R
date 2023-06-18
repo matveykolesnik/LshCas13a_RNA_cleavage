@@ -34,20 +34,28 @@ EcC3000_volcano <- ggplot(data = EcC3000_DESeq.dt.labeled, aes(x = log2FoldChang
 ggsave("Results/Pictures/EcC3000_DESeq2_volcano_rp_genes_rpoS_colored.png", plot = EcC3000_volcano, height = 5, width = 5)
 
 Type_I_antitoxin_rnas <- c("rdlA", "rdlB", "rdlC", "rdlD", "istR", "symR", "sibA", "sibB", "sibC", "sibD", "sibE", "ohsC", "ralA", "agrA")
-color_scheme1 <- c("antitoxin RNA" = "red", "Other" = "grey")
+Type_II_antitoxin_genes <- fread("MG1655_type_II_antitoxins.txt")$antitoxin
+
+color_scheme1 <- c("Type I antitoxin RNA" = "red", 
+                   "Type II antitoxin mRNA" = "yellow",
+                   "Other" = "grey")
 
 EcC3000_DESeq.dt.labeled_TAS <- EcC3000_DESeq.dt %>% 
-  mutate(label = ifelse(Name %in% Type_I_antitoxin_rnas, "antitoxin RNA", "Other")) %>% 
-  arrange(desc(label))
+  mutate(label = ifelse(Name %in% Type_I_antitoxin_rnas, "Type I antitoxin RNA", 
+                        ifelse(Name %in% Type_II_antitoxin_genes, "Type II antitoxin mRNA", "Other"))) %>% 
+  arrange(label)
 
 EcC3000_volcano_Type_I_TAS <- ggplot(data = EcC3000_DESeq.dt.labeled_TAS, aes(x = log2FoldChange, y = -log10(padj), color=label)) +
   geom_point() +
   scale_color_manual(values = color_scheme1) +
   xlab("log2FC") +
   ylab("-log10(FDR)") +
-  theme_bw()
+  geom_hline(yintercept=-log10(0.001), linetype="dashed", color = "black") +
+  theme_bw() +
+  theme(legend.position="none")
 
-ggsave("Results/Pictures/EcC3000_DESeq2_volcano_Type_I_TAS_colored.png", plot = EcC3000_volcano_Type_I_TAS, height = 5, width = 5)
+ggsave(filename = "Results/Pictures/Type_I_antitoxin_RNAs_expression/EcC3000_DESeq2_volcano_Type_I_and_II_TAS_colored.png", 
+       plot = EcC3000_volcano_Type_I_TAS, height = 8, width = 8)
 
 Ecd10LVM_DESeq.dt.labeled <- Ecd10LVM_DESeq.dt %>% 
   mutate(label = ifelse(Name == "rtcB", Name, "")) %>% 
@@ -85,3 +93,66 @@ EcC3000_volcano_Goerse_data <- ggplot(data = EcC3000_DESeq.dt.Gourse, aes(x = lo
   theme_bw()
 
 ggsave("Results/Pictures/EcC3000_DESeq2_Goerse_data_arg.png", plot = EcC3000_volcano_Goerse_data, height = 10, width = 10)
+
+#build separate plots
+EcC3000_DESeq.dt.Gourse_upregulated <- EcC3000_DESeq.dt %>% 
+  mutate(Gene = ifelse(Name %in% Gourse_2019_up_genes, "upregulated \n(Sanchez-Vazquez et al., 2019)", "Other")) %>% 
+  arrange(Gene)
+color_scheme_up = c("upregulated \n(Sanchez-Vazquez et al., 2019)" = "red", "other" = "grey")
+
+EcC3000_DESeq.dt.Gourse_upregulated_plot <- ggplot(data = EcC3000_DESeq.dt.Gourse_upregulated, aes(x = log2FoldChange, y = -log10(padj), color=Gene)) +
+  geom_point() +
+  scale_color_manual(values = color_scheme_up) +
+  xlab("log2FC") +
+  ylab("-log10(FDR)") +
+  geom_hline(yintercept = -log10(0.001), linetype="dashed", colour="black") +
+  theme_bw() +
+  theme(text = element_text(size = 20))
+
+ggsave("Results/Pictures/Stress_response/Goerse_et_al_upregulated_genes.png", 
+       plot = EcC3000_DESeq.dt.Gourse_upregulated_plot, height = 8, width = 8)
+
+#downregulated
+EcC3000_DESeq.dt.Gourse_downregulated <- EcC3000_DESeq.dt %>% 
+  mutate(Gene = ifelse(Name %in% Gourse_2019_down_genes, "downregulated \n(Sanchez-Vazquez et al., 2019)", "Other")) %>% 
+  arrange(desc(Gene))
+color_scheme_down = c("downregulated \n(Sanchez-Vazquez et al., 2019)" = "red", "other" = "grey")
+
+EcC3000_DESeq.dt.Gourse_downregulated_plot <- ggplot(data = EcC3000_DESeq.dt.Gourse_downregulated, aes(x = log2FoldChange, y = -log10(padj), color=Gene)) +
+  geom_point() +
+  scale_color_manual(values = color_scheme_down) +
+  xlab("log2FC") +
+  ylab("-log10(FDR)") +
+  geom_hline(yintercept = -log10(0.001), linetype="dashed", colour="black") +
+  theme_bw() +
+  theme(text = element_text(size = 20))
+
+ggsave("Results/Pictures/Stress_response/Goerse_et_al_downregulated_genes.png",
+       plot = EcC3000_DESeq.dt.Gourse_downregulated_plot, height = 8, width = 8)
+
+library(rtracklayer)
+
+Annotation <- "Annotations/E_coli_merged_annotation.gff3"
+
+Annotation.df <- as.data.frame(readGFF(Annotation)) %>% 
+  filter(type == "gene") %>% 
+  mutate(gene_biotype = sub("protein_coding", "CDS", gene_biotype)) %>%
+  mutate(gene_biotype = ifelse(gene_biotype %in% c("ncRNA", NA, "rRNA"), "Other", gene_biotype)) %>% 
+  select(c("Name", "gene_biotype")) %>% 
+  mutate(gene_biotype = factor(gene_biotype, levels = c("tRNA", "CDS", "Other")))
+
+Ecd10LVM_DESeq.dt.gene_biotypes <- inner_join(Ecd10LVM_DESeq.dt, Annotation.df)
+
+fwrite(Ecd10LVM_DESeq.dt.gene_biotypes, file = "Results/Tables/Ecd10LVM_DESeq.dt.gene_biotypes.tsv", sep = "\t", row.names = F)
+
+Ecd10LVM_DESeq_volcano <- ggplot(data = Ecd10LVM_DESeq.dt.gene_biotypes, aes(x = log2FoldChange, y = -log10(padj), color=gene_biotype)) +
+  geom_point() +
+  scale_color_manual(values = c("tRNA" = "red", "CDS" = "seagreen", "Other" = "grey"), name = "") +
+  xlab("log2FC") +
+  ylab("-log10(FDR)") +
+  geom_hline(yintercept = -log10(0.001), linetype="dashed", colour="black") +
+  theme_bw() +
+  theme(text = element_text(size = 20))
+
+ggsave("Results/Pictures/Ecd10LVM_DESeq2_volcano_tRNA_CDS_colored.png", Ecd10LVM_DESeq_volcano, height = 8, width = 8)
+

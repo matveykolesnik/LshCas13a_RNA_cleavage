@@ -1,0 +1,232 @@
+Help on reading this report
+===========================
+
+This report has three sections: Detailed, Summary by Similarity
+and Summary by Position.
+
+The detailed section shows each repeat in each putative
+CRISPR array.
+
+The summary sections give one line for each array.
+
+An 'array' is a contiguous sequence of CRISPR repeats
+looking like this:
+
+    REPEAT Spacer REPEAT Spacer REPEAT ... Spacer REPEAT
+
+Within one array, repeats have high similarity and spacers
+are, roughly speaking, unique within a window around the array.
+In a given array, each repeat has a similar length, and each
+spacer has a similar length. With default parameters, the
+algorithm allows a fair amount of variability in order to
+maximize sensitivity. This may allow identification of
+inactive ("fossil") arrays, and may in rare cases also
+induce false positives due to other classes of repeats
+such as microsatellites, LTRs and arrays of RNA genes.
+
+
+Columns in the detailed section are:
+
+  Pos               Sequence position, starting at 1 for the first base.
+  Repeat            Length of the repeat.
+  %id               Identity with the consensus sequence.
+  Spacer            Length of spacer to the right of this repeat.
+  Left flank        10 bases to the left of this repeat.
+  Repeat            Sequence of this repeat.
+                      Dots indicate positions where this repeat
+                      agrees with the consensus sequence below.
+  Spacer            Sequence of spacer to the right of this repeat,
+                      or 10 bases if this is the last repeat.
+
+The left flank sequence duplicates the end of the spacer for the preceding
+repeat; it is provided to facilitate visual identification of cases
+where the algorithm does not correctly identify repeat endpoints.
+
+At the end of each array there is a sub-heading that gives the average
+repeat length, average spacer length and consensus sequence.
+
+Columns in the summary sections are:
+
+  Array             Number 1, 2 ... referring back to the detailed report.
+  Sequence          FASTA label of the sequence. May be truncated.
+  From              Start position of array.
+  To                End position of array.
+  # copies          Number of repeats in the array.
+  Repeat            Average repeat length.
+  Spacer            Average spacer length.
+  +                 +/-, indicating orientation relative to first array in group.
+  Distance          Distance from previous array.
+  Consensus         Consensus sequence.
+
+In the Summary by Similarity section, arrays are grouped by similarity of their
+consensus sequences. If consensus sequences are sufficiently similar, they are
+aligned to each other to indicate probable relationships between arrays.
+
+In the Summary by Position section, arrays are sorted by position within the
+input sequence file.
+
+The Distance column facilitates identification of cases where a single
+array has been reported as two adjacent arrays. In such a case, (a) the
+consensus sequences will be similar or identical, and (b) the distance
+will be approximately a small multiple of the repeat length + spacer length.
+
+Use the -noinfo option to turn off this help.
+Use the -help option to get a list of command line options.
+
+pilercr v1.06
+By Robert C. Edgar
+
+L_shahii_DSM_19757.fasta: 6 putative CRISPR arrays found.
+
+
+
+DETAIL REPORT
+
+
+
+Array 1
+>NZ_KB890259.1 Leptotrichia shahii DSM 19757 B031DRAFT_scaffold_0.1, whole genome shotgun sequence
+
+       Pos  Repeat     %id  Spacer  Left flank    Repeat                                   Spacer
+==========  ======  ======  ======  ==========    =====================================    ======
+    101500      37   100.0      40  AAAAGACGGG    .....................................    GGTGTCCATATTTCTATTCTTCCTTTTAATTTATCTATAG
+    101577      37   100.0      36  TTATCTATAG    .....................................    TTCATTTCTCTCTCCTATATAAACTGGCACGTTGTT
+    101650      37   100.0      35  GCACGTTGTT    .....................................    CATATTCTATTTTTTCGAAGTAAATTTCTACGTAT
+    101722      37   100.0      36  TTCTACGTAT    .....................................    TTTCTTACAGATGGGTCTACGGGATCTGAAATTGGA
+    101795      37   100.0      37  TGAAATTGGA    .....................................    AAGTTATCTTATGTTTACTTTGATTTGATTTTAAAAG
+    101869      37    94.6          ATTTTAAAAG    ........................T...........A    TAATATTTA
+==========  ======  ======  ======  ==========    =====================================
+         6      37              36                GTTAAAGTAGAGTATCCATTAAAACAAGGATTGAAAC
+
+
+Array 2
+>NZ_KB890259.1 Leptotrichia shahii DSM 19757 B031DRAFT_scaffold_0.1, whole genome shotgun sequence
+
+       Pos  Repeat     %id  Spacer  Left flank    Repeat                          Spacer
+==========  ======  ======  ======  ==========    ============================    ======
+    297835      28    96.4      38  TTGTAATGTA    .........T..................    CCTTATCTGATTTTTCCTTGTCCACAACCGATGTCTTA
+    297901      28   100.0      35  CGATGTCTTA    ............................    GAAAGATATACGAAAGAAAATTGGATATTCTGACC
+    297964      28   100.0      38  TATTCTGACC    ............................    CGAATATATTTATCTTATAATTATCTTTATCATATTGC
+    298030      28   100.0      37  ATCATATTGC    ............................    TTCTATTCTCCTTATTTATACATATTTTTATTTATAC
+    298095      28   100.0      38  TTATTTATAC    ............................    TTGGATTTATAACAGCTGGAAATATAAATTTATTTGTC
+    298161      28   100.0      37  TTTATTTGTC    ............................    TTGTAATTTAGACACTAATAATTGTATGTTATCATTC
+    298226      28   100.0      36  GTTATCATTC    ............................    TTTTATCAGTATTAATTGTCTTGGGTGCATTACTGC
+    298290      28   100.0      39  GCATTACTGC    ............................    CTTAATTCCATATCTTTTAAATATTTGTATAATTTGACC
+    298357      28   100.0      38  TAATTTGACC    ............................    GATTGTAGTAATTTTTATGATAGTTATGTAGAAGATAC
+    298423      28   100.0      38  TAGAAGATAC    ............................    CAACGGCAAAAAAACAATTAAATTATTACGTTGCCATC
+    298489      28   100.0          CGTTGCCATC    ............................    GCTTCACTAAA
+==========  ======  ======  ======  ==========    ============================
+        11      28              37                TTTACAATACAAAATGTTCCTATTAAAT
+
+
+Array 3
+>NZ_KB890259.1 Leptotrichia shahii DSM 19757 B031DRAFT_scaffold_0.1, whole genome shotgun sequence
+
+       Pos  Repeat     %id  Spacer  Left flank    Repeat                         Spacer
+==========  ======  ======  ======  ==========    ===========================    ======
+    298554      27   100.0      39  CTTATTAAGG    ...........................    TTCTACAACTCCAGAGGGATGGAAAAGTCTTAATAGGCG
+    298620      27   100.0      37  TTAATAGGCG    ...........................    GTCAAAATATTCAAAAATGGATTTTGATCCAGTAACA
+    298684      27   100.0      38  TCCAGTAACA    ...........................    TATAAATACCTTCATTCTTATGCAAAAACCATTCGTTA
+    298749      27    77.8      44  CCATTCGTTA    .....................------    TACTCCCATTTCCCAAGTCATTTGCTTTGATTTAACATTCGTTA
+    298820      27   100.0      37  ACATTCGTTA    ...........................    TTGTTGCTTCGGATAAAGTGCCGGACCATCACGCGGA
+    298884      27   100.0      38  ATCACGCGGA    ...........................    TAAAGGATAATATGCCATTTCAAACATATGTTGATCGA
+    298949      27   100.0      37  TGTTGATCGA    ...........................    TATGACATTATTTTCTAATATCGATTTTGGGAGCATA
+    299013      27   100.0      37  TGGGAGCATA    ...........................    GAATGATATAAGAGGTACTGTTAGAGATAATGGTAAA
+    299077      27   100.0      38  TAATGGTAAA    ...........................    TGAGAAGGCGAAAAAGAAAATTTTGAAAAAGATATGTA
+    299142      27   100.0      36  AAGATATGTA    ...........................    GCAAAAACAGTTGATACAGAGAGTGGAACAAGCAAA
+    299205      27   100.0          AACAAGCAAA    ...........................    TTTATAAAGG
+==========  ======  ======  ======  ==========    ===========================
+        11      27              38                TTTACAATACAAAATGTTCCTATTAAA
+
+
+Array 4
+>NZ_KB890259.1 Leptotrichia shahii DSM 19757 B031DRAFT_scaffold_0.1, whole genome shotgun sequence
+
+       Pos  Repeat     %id  Spacer  Left flank    Repeat                           Spacer
+==========  ======  ======  ======  ==========    =============================    ======
+    302912      29   100.0      36  AGATAGTAAG    .............................    ATTTTTGATGAAAATATTGGAAGAGCCTTTAATGAG
+    302977      29   100.0      36  CTTTAATGAG    .............................    TTTTCATTAACTATTATATTATCTTGATTTTTATTA
+    303042      29   100.0      36  ATTTTTATTA    .............................    AATTGTCGACTGTATATGTCGCAGTCGTATGCAACA
+    303107      29   100.0      36  GTATGCAACA    .............................    AATTAACAACACTTCCAGTTCCGTTTGGGTTTTTCA
+    303172      29   100.0      36  GGGTTTTTCA    .............................    GAATAAATCCTATTCCATAATACTCATTATTATCCG
+    303237      29   100.0      37  TTATTATCCG    .............................    GTCCTTTTATGCTGAATGAACCTCCAGCATTTTTCAA
+    303303      29   100.0      37  CATTTTTCAA    .............................    TCAAATCCAAGAATAAAGCGATTGTACATTAATCCAA
+    303369      29   100.0      36  ATTAATCCAA    .............................    TTCTATATTTTATTTTTATTGTTATTGTTAGATATA
+    303434      29   100.0      37  GTTAGATATA    .............................    ATCTTCCCCATTGCTCATCATAATTGTGTTTTTTTCA
+    303500      29   100.0      36  GTTTTTTTCA    .............................    TTATTATAAACGTTTTGTACTGTTAAGTTTTTCATT
+    303565      29   100.0      37  GTTTTTCATT    .............................    TATCTAGCAGTCTATGTAGTTGTTGTTCTGCCTGCTG
+    303631      29   100.0      35  CTGCCTGCTG    .............................    CATCCTTTATTTTTTTTTATAATTTTATATTTTTT
+    303695      29   100.0      36  TATATTTTTT    .............................    GTTTTTCATTTATAACAATATATTTTCTTTTTAATA
+    303760      29    96.6          CTTTTTAATA    .......................A.....    ATCGATATCAT
+==========  ======  ======  ======  ==========    =============================
+        14      29              36                ATTTAATAGGAACATTTTGTATTGTAAAT
+
+
+Array 5
+>NZ_KB890259.1 Leptotrichia shahii DSM 19757 B031DRAFT_scaffold_0.1, whole genome shotgun sequence
+
+       Pos  Repeat     %id  Spacer  Left flank    Repeat                                   Spacer
+==========  ======  ======  ======  ==========    =====================================    ======
+    508623      37    89.2      39  AGTTGTTGTT    -...T..C....A........................    TTTAAAGAAAAACACTGTTGCGAATTTCGGACCAGGGGG
+    508699      37   100.0      40  GACCAGGGGG    .....................................    AATATGTACCAAAAGCACATTATGATGTAGTGGTTAATTC
+    508776      37   100.0      35  TGGTTAATTC    .....................................    CAATTATGGTTAGCAGTTAGAAAATATATTGATAT
+    508848      37   100.0      37  ATATTGATAT    .....................................    AGATTTAGATACTATGTATAAAAGTACATTTTCACCA
+    508922      37   100.0      41  ATTTTCACCA    .....................................    TTCTTATTATAGGCGAAAGCATAAACCTAAATTTTATAGGA
+    509000      37   100.0      40  TTTTATAGGA    .....................................    CTTCTTTGTGAAGGTCTTACCAAACCCTGGAGGAAACAAG
+    509077      37   100.0      37  AGGAAACAAG    .....................................    CTAATATTCCTACGGATAGTGACATTGGTGTTGTATT
+    509151      37   100.0          GTGTTGTATT    .....................................    CCGTACTTT
+==========  ======  ======  ======  ==========    =====================================
+         8      37              38                GTTTCAATCCTTGTTTTAATGGATAACTTACTTTAAC
+
+
+Array 6
+>NZ_KB890278.1 Leptotrichia shahii DSM 19757 B031DRAFT_scaffold_9.10, whole genome shotgun sequence
+
+       Pos  Repeat     %id  Spacer  Left flank    Repeat                                  Spacer
+==========  ======  ======  ======  ==========    ====================================    ======
+     34195      36   100.0      32  ATTCTTTAGA    ....................................    GAAAAAGAAGAGTTTATTCAGATAGATTTGTC
+     34263      36   100.0      31  TAGATTTGTC    ....................................    AATATGGATTACTTGGTAGAACAGCAATCTA
+     34330      36   100.0          CAGCAATCTA    ....................................    CCATCCTAATT
+==========  ======  ======  ======  ==========    ====================================
+         3      36              31                GTTTTAGTCCCCTTCGATATTGGGGTGGTCTATATC
+
+
+SUMMARY BY SIMILARITY
+
+
+
+Array          Sequence    Position      Length  # Copies  Repeat  Spacer  +  Consensus
+=====  ================  ==========  ==========  ========  ======  ======  =  =========
+    2  NZ_KB890259.1 Le      297835         682        11      28      37  +  -TTTACAATACAAAATGTTCCTATTAAAT
+    3  NZ_KB890259.1 Le      298554         672        11      27      38  +  -TTTACAATACAAAATGTTCCTATTAAA-
+    4  NZ_KB890259.1 Le      302912         877        14      29      36  -  ATTTACAATACAAAATGTTCCTATTAAAT
+                                                                               *************************** 
+
+    1  NZ_KB890259.1 Le      101500         406         6      37      36  +  GTTAAAGTAGAGTATCCATTAAAACAAGGATTGAAAC
+    5  NZ_KB890259.1 Le      508623         564         8      37      38  -  GTTAAAGTAAGTTATCCATTAAAACAAGGATTGAAAC
+                                                                              *********   *************************
+
+    6  NZ_KB890278.1 Le       34195         171         3      36      31  +  GTTTTAGTCCCCTTCGATATTGGGGTGGTCTATATC
+
+
+
+SUMMARY BY POSITION
+
+
+
+>NZ_KB890259.1 Leptotrichia shahii DSM 19757 B031DRAFT_scaffold_0.1, whole genome shotgun sequence
+
+Array          Sequence    Position      Length  # Copies  Repeat  Spacer    Distance  Consensus
+=====  ================  ==========  ==========  ========  ======  ======  ==========  =========
+    1  NZ_KB890259.1 Le      101500         406         6      37      36              GTTAAAGTAGAGTATCCATTAAAACAAGGATTGAAAC
+    2  NZ_KB890259.1 Le      297835         682        11      28      37      195893  TTTACAATACAAAATGTTCCTATTAAAT
+    3  NZ_KB890259.1 Le      298554         672        11      27      38           0  TTTACAATACAAAATGTTCCTATTAAA
+    4  NZ_KB890259.1 Le      302912         877        14      29      36        3648  ATTTAATAGGAACATTTTGTATTGTAAAT
+    5  NZ_KB890259.1 Le      508623         564         8      37      38      204798  GTTTCAATCCTTGTTTTAATGGATAACTTACTTTAAC
+
+
+>NZ_KB890278.1 Leptotrichia shahii DSM 19757 B031DRAFT_scaffold_9.10, whole genome shotgun sequence
+
+Array          Sequence    Position      Length  # Copies  Repeat  Spacer    Distance  Consensus
+=====  ================  ==========  ==========  ========  ======  ======  ==========  =========
+    6  NZ_KB890278.1 Le       34195         171         3      36      31              GTTTTAGTCCCCTTCGATATTGGGGTGGTCTATATC

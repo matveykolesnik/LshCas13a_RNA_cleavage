@@ -18,23 +18,30 @@ Ec_Lsh.TPM <- inner_join(Ec_featureCounts.TPM.dt, Lsh_featureCounts.TPM.dt, by="
   filter_at(c("EcTPM", "LshTPM"), all_vars(. > 0))
 print(nrow(Ec_Lsh.TPM))
 
-labeled_genes <- c("LshCas13a", "ssrA", "ffs", "rnpB", "ssrS", "rpoB", "rpoC")
+labeled_genes <- c("LshCas13a", "ssrA", "ffs", "rnpB", "ssrS", "rpoB", "rpoC", "LshSpacer_1")
 
 Ec_Lsh.TPM.labeled <- Ec_Lsh.TPM %>% 
   mutate(ref = ifelse(Name %in% labeled_genes, Name, "")) %>% 
-  mutate(ref = ifelse(Name == "LshSpacer_1", "crRNA", ref))
+  mutate(ref = ifelse(Name == "LshSpacer_1", "crRNA", ref)) %>% 
+  mutate(fill = ifelse(Name == "LshCas13a", "cas13a",
+                       ifelse(Name %in% labeled_genes, "reference_genes", "other")))
 
 cor.test(x = log10(Ec_Lsh.TPM.labeled$EcTPM), y = log10(Ec_Lsh.TPM.labeled$LshTPM))
 
-correlation_plot <- ggplot(Ec_Lsh.TPM.labeled, aes(x = log10(EcTPM), y = log10(LshTPM))) +
-  geom_point()+
-  geom_smooth(method=lm) +
-  geom_text_repel(aes(label = ref)) +
+color_scheme <- c("LshCas13a" = "red", "other" = "grey", "reference_genes" = "purple")
+
+correlation_plot <- ggplot(Ec_Lsh.TPM.labeled, aes(x = log10(EcTPM), y = log10(LshTPM), color=fill)) +
+  geom_point() +
+  geom_smooth(method=lm, color="black") +
+  scale_color_manual(values = color_scheme) +
+  geom_text_repel(aes(label = ref), colour="black", size=8, max.overlaps=20) +
   xlab("lgTPM of E. coli gene transcripts") +
   ylab("lgTPM of L. shahii gene transcripts") +
-  stat_cor(method = "spearman") +
-  theme_bw()
+  stat_cor(method = "spearman", colour = "black", size=10) +
+  theme_bw() +
+  theme(text = element_text(size = 25),
+        legend.position="none")
 
-ggsave(filename = "Results/Pictures/Eco_Lsh_cor_plot_cas13a_added_spearman_cor_coeff.png", 
+ggsave(filename = "Results/Pictures/Correlation_plots/Eco_Lsh_cor_plot_cas13a_added_spearman_cor_coeff.png", 
        plot = correlation_plot, dpi = "retina", height = 10, width = 10)
 

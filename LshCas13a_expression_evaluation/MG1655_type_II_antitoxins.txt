@@ -1,0 +1,11 @@
+toxin	antitoxin
+chpB	chpS
+yafQ	dinJ
+yafO	yafN
+hicA	hicB
+relE	relB
+yoeB	yefM
+mazF	mazE
+mqsR	mqsA
+higB	higA
+yhaV	prlF
