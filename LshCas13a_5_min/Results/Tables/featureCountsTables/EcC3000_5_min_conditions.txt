@@ -1,0 +1,7 @@
+SampleID	Condition
+NT1_5min	nontargeting
+NT2_5min	nontargeting
+NT3_5min	nontargeting
+T1_5min	targeting
+T2_5min	targeting
+T3_5min	targeting
