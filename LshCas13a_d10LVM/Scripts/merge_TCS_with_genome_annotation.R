@@ -52,4 +52,5 @@ volcano_plot <- ggplot(overlaps_table.merged.viz, aes(x=logFC, y=-log10(PValue.a
   guides(color=guide_legend("Type of genomic feature")) +
   theme_bw()
 
-ggsave("Results/Pictures/EcC3000_M13_volcano_draft.png", plot = volcano_plot, dpi = 300)
+#ggsave("Results/Pictures/EcC3000_M13_volcano_draft.png", plot = volcano_plot, dpi = 300)
+plot(volcano_plot)

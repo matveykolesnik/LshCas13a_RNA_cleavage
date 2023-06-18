@@ -12,7 +12,8 @@
 **/IGV_sessions
 *.fai
 *.wig
-*.tsv.gz
+*.gz
+*.tsv
 *.bt2
 *.zip
 *.svg

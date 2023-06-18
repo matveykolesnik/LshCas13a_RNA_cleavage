@@ -21,7 +21,9 @@ design <- model.matrix(~samples)
 #convert data frame to DGE list
 dge <- DGEList(counts = N5E_counts_table[4:9], group = samples)
 #keep only features that have CPM >=1 at least in one sample
-dge <- dge[rowSums(cpm(dge)>=1) >= 3, , keep.lib.sizes=FALSE]
+#dge <- dge[rowSums(cpm(dge)>=1) >= 3, , keep.lib.sizes=FALSE]
+dge <- dge[rowSums(cpm(dge)[,design_table[design_table$Exp_group == "targeting" & design_table$TAP_treatment == "untreated", "Sample"]]>=10) >= 3, , keep.lib.sizes=FALSE]
+#dge <- dge[rowSums(cpm(dge)>=1) == 6, , keep.lib.sizes=FALSE]
 #calculate factors of normalization
 dge <- calcNormFactors(dge, method = "TMM")
 #estimate dispersion
