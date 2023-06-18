@@ -1,0 +1,12 @@
+##gff-version 3
+##sequence-region M13+Sp1rev_C-PFS 1 7354
+M13+Sp1rev_C-PFS	GenBank	gene	1	1047	.	+	1	ID=I;Name=I;Note=phage assembly,color: #993366;codon_start=1;label=M13 gene I;product=pI;translation=length.348
+M13+Sp1rev_C-PFS	GenBank	gene	1025	2305	.	+	1	ID=IV;Name=IV;Note=phage assembly,color: #993366;codon_start=1;label=M13 gene IV;product=pIV;translation=length.426
+M13+Sp1rev_C-PFS	GenBank	gene	3022	3633	.	+	1	ID=lacZ fragment;Name=lacZ fragment;Note=color: #993366;codon_start=1;label=lacZ-alpha;product=LacZ-alpha fragment of beta-galactosidase;translation=length.203
+M13+Sp1rev_C-PFS	GenBank	gene	3759	4991	.	+	1	ID=II;Name=II;Note=replication,color: #993366;codon_start=1;label=M13 gene II;product=pII;translation=length.410
+M13+Sp1rev_C-PFS	GenBank	gene	5003	5266	.	+	1	ID=V;Name=V;Note=replication,color: #993366;codon_start=1;label=M13 gene V;product=pV;translation=length.87
+M13+Sp1rev_C-PFS	GenBank	gene	5268	5369	.	+	1	ID=VII;Name=VII;Note=minor coat protein,color: #993366;codon_start=1;label=M13 gene VII;product=pVII;translation=length.33
+M13+Sp1rev_C-PFS	GenBank	gene	5366	5464	.	+	1	ID=IX;Name=IX;Note=minor coat protein,color: #993366;codon_start=1;label=M13 gene IX;product=pIX;translation=length.32
+M13+Sp1rev_C-PFS	GenBank	gene	5461	5682	.	+	1	ID=VIII;Name=VIII;Note=major coat protein,color: #993366;codon_start=1;label=M13 gene VIII;product=pVIII;translation=length.73
+M13+Sp1rev_C-PFS	GenBank	gene	5738	7012	.	+	1	ID=III;Name=III;Note=minor coat protein,color: #993366;codon_start=1;label=M13 gene III;product=pIII;translation=length.424
+M13+Sp1rev_C-PFS	GenBank	gene	7015	7353	.	+	1	ID=VI;Name=VI;Note=minor coat protein,color: #993366;codon_start=1;label=M13 gene VI;product=pVI;translation=length.112

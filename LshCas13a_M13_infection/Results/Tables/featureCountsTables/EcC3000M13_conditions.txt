@@ -1,0 +1,7 @@
+SampleID	Condition
+M13_NT1	nontargeting
+M13_NT2	nontargeting
+M13_NT3	nontargeting
+M13_T1	targeting
+M13_T2	targeting
+M13_T3	targeting
